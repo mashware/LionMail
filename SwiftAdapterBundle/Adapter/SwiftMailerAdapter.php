@@ -11,14 +11,14 @@
  * @author Alberto Vioque <mashware@gmail.com>
  */
 
-namespace LionMail\LionCoreBundle\Adapter\SwiftMailer;
+namespace LionMail\SwiftAdapterBundle\Adapter\SwiftMailer;
 
 use LionMail\LionCoreBundle\Adapter\Interfaces\EnginerMailer;
-use LionMail\LionCoreBundle\Adapter\SwiftMailer\SwiftMessageAdapter;
+use LionMail\SwiftAdapterBundle\Adapter\SwiftMailer\SwiftMessageAdapter;
 
 /**
  * Class SwiftMailerAdapter
- * @package LionMail\LionCoreBundle\Adapter\SwiftMailer
+ * @package LionMail\SwiftAdapterBundle\Adapter\SwiftMailer
  */
 class SwiftMailerAdapter implements EnginerMailer {
 

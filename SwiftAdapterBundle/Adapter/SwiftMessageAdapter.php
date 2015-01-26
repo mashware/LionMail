@@ -11,13 +11,13 @@
  * @author Alberto Vioque <mashware@gmail.com>
  */
 
-namespace LionMail\LionCoreBundle\Adapter\SwiftMailer;
+namespace LionMail\SwiftAdapterBundle\Adapter\SwiftMailer;
 
 use LionMail\LionCoreBundle\Adapter\Interfaces\LionMessage;
 
 /**
  * Class SwiftMessageAdapter
- * @package LionMail\LionCoreBundle\Adapter\SwiftMailer
+ * @package LionMail\SwiftAdapterBundle\Adapter\SwiftMailer
  */
 class SwiftMessageAdapter implements LionMessage {
 

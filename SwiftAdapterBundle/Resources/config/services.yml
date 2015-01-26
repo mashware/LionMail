@@ -1,0 +1,4 @@
+services:
+#    swift_adapter.example:
+#        class: LionMail\SwiftAdapterBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
