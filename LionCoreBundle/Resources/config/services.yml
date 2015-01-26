@@ -1,0 +1,10 @@
+services:
+    lion_core.swift_mailer_adapter:
+        class: %lion_core.swift.mailer.adapter.class%
+        arguments:
+            swift.mailer: @mailer
+
+    lion_core.enginer:
+        class: %lion_core.enginer.class%
+        arguments:
+            enginer.mailer.adapter: @lion_core.swift_mailer_adapter
