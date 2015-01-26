@@ -1,4 +1,0 @@
-parameters:
-    lion_core.enginer.class: "Mash\\LionMail\\LionCoreBundle\\Services\\Enginer"
-    lion_core.swift.mailer.adapter.class: "Mash\\LionMail\\LionCoreBundle\\Adapter\\SwiftMailerAdapter"
-
