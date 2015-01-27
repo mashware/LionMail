@@ -1,5 +1,5 @@
 <?php
- 
+
 /**
  * Copyright (c) 2014 Mashware
  *
@@ -12,6 +12,7 @@
  */
 
 namespace LionMail\LionCoreBundle\Services;
+
 use LionMail\LionCoreBundle\Adapter\Interfaces\EnginerMailer;
 use LionMail\LionCoreBundle\Adapter\Interfaces\LionMessage;
 
@@ -20,7 +21,8 @@ use LionMail\LionCoreBundle\Adapter\Interfaces\LionMessage;
  *
  * @package LionMail\LionCoreBundle\Services
  */
-class Enginer implements EnginerMailer {
+class Enginer implements EnginerMailer
+{
 
     /**
      * Adaptador elegido por el usuario (traducir)
@@ -42,7 +44,8 @@ class Enginer implements EnginerMailer {
      *
      * @param LionMessage $message
      */
-    public function sendMessage($message){
+    public function sendMessage($message)
+    {
         $this->enginerMailerAdapter->sendMessage($message);
     }
 
@@ -51,7 +54,8 @@ class Enginer implements EnginerMailer {
      *
      * @return LionMessage
      */
-    public function createMessage() {
+    public function createMessage()
+    {
         return $this->enginerMailerAdapter->createMessage();
     }
 

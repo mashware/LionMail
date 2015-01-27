@@ -17,7 +17,13 @@ namespace LionMail\LionCoreBundle\Adapter\Interfaces;
  * Interface LionMessage
  * @package LionMail\LionCoreBundle\Adapter\Interfaces
  */
-interface LionMessage {
+interface LionMessage
+{
+
+    /**
+     * @param \Swift_Message $swiftMessage
+     */
+    function __construct(\Swift_Message $swiftMessage);
 
     /**
      * Set the from address of this message.
@@ -28,21 +34,84 @@ interface LionMessage {
      * associated with the address.
      *
      * @param string $addresses
-     * @param string $name      optional
+     * @param string $name optional
      *
      * @return $this self Object
      */
-    public function setFrom($addresses, $name);
+    public function setFrom($addresses, $name = null);
 
     /**
-     * Gets the from to the email (traducir)
+     * Get the from address of this message.
      *
-     * @return array
+     * @return mixed
      */
     public function getFrom();
 
     /**
-     * Specifies the subject line that is displayed in the recipients' mail client (traducir)
+     * Set the to addresses of this message.
+     *
+     * If multiple recipients will receive the message an array should be used.
+     * Example: array('receiver@domain.org', 'other@domain.org' => 'A name')
+     *
+     * If $name is passed and the first parameter is a string, this name will be
+     * associated with the address.
+     *
+     * @param mixed $addresses
+     * @param string $name optional
+     *
+     * @return $this self Object
+     */
+    public function setTo($addresses, $name = null);
+
+    /**
+     * Get the To addresses of this message.
+     *
+     * @return array
+     */
+    public function getTo();
+
+    /**
+     * Set the Cc addresses of this message.
+     *
+     * If $name is passed and the first parameter is a string, this name will be
+     * associated with the address.
+     *
+     * @param mixed $addresses
+     * @param string $name optional
+     *
+     * @return $this self Object
+     */
+    public function setCc($addresses, $name = null);
+
+    /**
+     * Get the Cc address of this message.
+     *
+     * @return array
+     */
+    public function getCc();
+
+    /**
+     * Set the Bcc addresses of this message.
+     *
+     * If $name is passed and the first parameter is a string, this name will be
+     * associated with the address.
+     *
+     * @param mixed $addresses
+     * @param string $name optional
+     *
+     * @return $this self Object
+     */
+    public function setBcc($addresses, $name = null);
+
+    /**
+     * Get the Bcc addresses of this message.
+     *
+     * @return array
+     */
+    public function getBcc();
+
+    /**
+     * Set the subject of this message.
      *
      * @param string $subject
      * @return $this self Object
@@ -50,35 +119,23 @@ interface LionMessage {
     public function setSubject($subject);
 
     /**
-     * Get the subject line that is displayed in the recipients' mail client (traducir)
+     * Get the subject of this message.
      *
      * @return string
      */
     public function getSubject();
 
-
     /**
-     * Sets the to of the email (traducir)
+     * Set the body of this entity, either as a string, or as an instance of
+     * {@link Swift_OutputByteStream}.
      *
-     * @param string $to
+     * @param mixed $body
+     * @param string $contentType optional
+     * @param string $charset optional
+     *
      * @return $this self Object
      */
-    public function setTo($to);
-
-    /**
-     * Gets the to of the email (traducir)
-     *
-     * @return string
-     */
-    public function getTo();
-
-    /**
-     * Sets the body to the email (traducir)
-     *
-     * @param string $body
-     * @return $this self Object
-     */
-    public function setBody($body);
+    public function setBody($body, $contentType = null, $charset = null);
 
     /**
      * Gets the body to the email (traducir)
@@ -88,67 +145,48 @@ interface LionMessage {
     public function getBody();
 
     /**
-     * Specifies the address of the person who physically sent the message (higher precedence than From:)
+     * Set the sender of this message.
      *
-     * @param string $sender
+     * This does not override the From field, but it has a higher significance.
+     *
+     * @param string $address
+     * @param string $name optional
+     *
      * @return $this self Object
      */
-    public function setSender($sender);
+    public function setSender($address, $name = null);
 
     /**
-     * Get the address of the person who physically sent the message (higher precedence than From:)
+     * Get the sender of this message.
      *
      * @return string
      */
     public function getSender();
 
     /**
-     * Specifies the addresses of recipients who will be copied in on the message
+     * Set the reply-to address of this message.
      *
-     * @param string $cc
+     * You may pass an array of addresses if replies will go to multiple people.
+     *
+     * If $name is passed and the first parameter is a string, this name will be
+     * associated with the address.
+     *
+     * @param string $addresses
+     * @param string $name optional
+     *
      * @return $this self Object
      */
-    public function setCc($cc);
+    public function setReplyTo($addresses, $name = null);
 
     /**
-     * Get the addresses of recipients who will be copied in on the message
-     *
-     * @return string
-     */
-    public function getCc();
-
-    /**
-     * Specifies the addresses of recipients who the message will be blind-copied to. Other recipients will not be aware of these copies.
-     *
-     * @param string $bcc
-     * @return $this self Object
-     */
-    public function setBcc($bcc);
-
-    /**
-     * Gets the addresses of recipients who the message will be blind-copied to. Other recipients will not be aware of these copies.
-     *
-     * @return string
-     */
-    public function getBcc();
-
-    /**
-     * Reply-To Specifies the address where replies are sent to getReplyTo() (traducir)
-     *
-     * @param string $replyTo
-     * @return $this self Object
-     */
-    public function setReplyTo($replyTo);
-
-    /**
-     * Gets the address where replies are sent to getReplyTo() (traducir)
+     * Get the body of this entity as a string.
      *
      * @return string
      */
     public function getReplyTo();
 
     /**
-     * Date Specifies the date at which the message was sent getDate()
+     * Set the date at which this message was created.
      *
      * @param \DateTime $date
      * @return $this self Object
@@ -163,22 +201,24 @@ interface LionMessage {
     public function getDate();
 
     /**
-     * Specifies the format of the message (usually text/plain or text/html)
+     * Set the Content-type of this entity.
      *
-     * @param string $contentType
+     * @param string $type
      * @return $this self Object
      */
-    public function setContentType($contentType);
+    public function setContentType($type);
 
     /**
-     * Get the format of the message (usually text/plain or text/html)
+     * Get the Content-type of this entity.
      *
      * @return string
      */
     public function getContentType();
 
     /**
-     * All MIME entities (including a message) have a toString() method that you can call if you want to take a look at what is going to be sent. (traducir)
+     * Returns a string representation of this object.
+     *
+     * @see toString()
      *
      * @return string
      */

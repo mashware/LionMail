@@ -18,7 +18,8 @@ namespace LionMail\LionCoreBundle\Adapter\Interfaces;
  *
  * @package LionMail\LionCoreBundle\Adapter\Interfaces
  */
-interface EnginerMailer {
+interface EnginerMailer
+{
 
     /**
      * Send the menssage

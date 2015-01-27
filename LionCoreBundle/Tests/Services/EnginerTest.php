@@ -20,7 +20,8 @@ use LionMail\LionCoreBundle\Services\Enginer;
  *
  * @package LionMail\LionCoreBundle\Tests\Services
  */
-class EnginerTest extends \PHPUnit_Framework_TestCase {
+class EnginerTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @var EnginerMailer
@@ -37,14 +38,16 @@ class EnginerTest extends \PHPUnit_Framework_TestCase {
      */
     private $lionMessage;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->lionMessage = $this->getMock('LionMail\LionCoreBundle\Adapter\Interfaces\LionMessage');
         $this->enginerMailer = $this->getMock('LionMail\LionCoreBundle\Adapter\Interfaces\EnginerMailer');
 
         $this->enginer = new Enginer($this->enginerMailer);
     }
 
-    public function testCreateMessageReturnInstanceOfLionMessage() {
+    public function testCreateMessageReturnInstanceOfLionMessage()
+    {
         $this->enginerMailer->expects($this->once())
             ->method('createMessage')
             ->will($this->returnValue($this->lionMessage));
