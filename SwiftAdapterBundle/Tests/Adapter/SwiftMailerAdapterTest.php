@@ -11,11 +11,12 @@
  * @author Alberto Vioque <mashware@gmail.com>
  */
 
-namespace LionMail\LionCoreBundle\Tests\Adapter\SwiftMailer;
+namespace LionMail\SwiftAdapterBundle\Tests\Adapter;
 
-use LionMail\LionCoreBundle\Adapter\SwiftMailer\SwiftMailerAdapter;
+use LionMail\SwiftAdapterBundle\Adapter\SwiftMailerAdapter;
 
-class SwiftMailerAdapterTest extends \PHPUnit_Framework_TestCase {
+class SwiftMailerAdapterTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @var SwiftMailerAdapter
@@ -27,49 +28,50 @@ class SwiftMailerAdapterTest extends \PHPUnit_Framework_TestCase {
      */
     private $swiftMailer;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->swiftMailer = $this->getMockBuilder('\Swift_Mailer')
             ->disableOriginalConstructor()
-            ->getMock()
-        ;
+            ->getMock();
 
         $this->swiftMailerEnginer = new SwiftMailerAdapter($this->swiftMailer);
 
     }
 
-    public function testCreateMessageReturnInstanceOfSwiftMessage() {
+    public function testCreateMessageReturnInstanceOfSwiftMessage()
+    {
         $messageCreated = $this->swiftMailerEnginer->createMessage();
 
-        $this->assertInstanceOf('LionMail\LionCoreBundle\Adapter\SwiftMailer\SwiftMessageAdapter', $messageCreated);
+        $this->assertInstanceOf('LionMail\SwiftAdapterBundle\Adapter\SwiftMessageAdapter', $messageCreated);
     }
 
-/*
-    public function testCreatedAtIsDateTime() {
-        $date = new \DateTime();
+    /*
+        public function testCreatedAtIsDateTime() {
+            $date = new \DateTime();
 
-        $notification = new Notification();
-        $notification->setCreatedAt($date);
+            $notification = new Notification();
+            $notification->setCreatedAt($date);
 
-        // $this->assertEquals($date, $notification->getCreatedAt());
-        $this->assertInstanceOf('DateTime', $notification->getCreatedAt(), 'CreateAt es un objeto \DateTime');
-      $prueba = $this->getMockBuilder('Escuela\BackendBundle\Entity\Prueba')->getMock();
-        $prueba->expects($this->atLeastOnce())
-            ->method('getInicioInscripcion')
-            ->will($this->returnValue(new \DateTime('now - 10 days')));
-        $prueba->expects($this->any())
-            ->method('getFinInscripcion')
-            ->will($this->returnValue(new \DateTime('now + 2 days')));
-        $this->testClass->setPrueba($prueba);
+            // $this->assertEquals($date, $notification->getCreatedAt());
+            $this->assertInstanceOf('DateTime', $notification->getCreatedAt(), 'CreateAt es un objeto \DateTime');
+          $prueba = $this->getMockBuilder('Escuela\BackendBundle\Entity\Prueba')->getMock();
+            $prueba->expects($this->atLeastOnce())
+                ->method('getInicioInscripcion')
+                ->will($this->returnValue(new \DateTime('now - 10 days')));
+            $prueba->expects($this->any())
+                ->method('getFinInscripcion')
+                ->will($this->returnValue(new \DateTime('now + 2 days')));
+            $this->testClass->setPrueba($prueba);
 
-        $this->assertSame(true, $this->testClass->estaPlazoAbierto(), "Si esta el plazo abierto");
+            $this->assertSame(true, $this->testClass->estaPlazoAbierto(), "Si esta el plazo abierto");
 
-    }
-    public function testCreatedAtNotIsDateTime() {
-       /* $notification = new Notification();
-        $notification->setCreatedAt('989');
+        }
+        public function testCreatedAtNotIsDateTime() {
+           /* $notification = new Notification();
+            $notification->setCreatedAt('989');
 
-       // $this->assertEquals($date, $notification->getCreatedAt());
-        $this->assertNotInstanceOf('\DateTime', $notification->getCreatedAt(), 'CreateAt no es devuelve un objeto \DateTime');
+           // $this->assertEquals($date, $notification->getCreatedAt());
+            $this->assertNotInstanceOf('\DateTime', $notification->getCreatedAt(), 'CreateAt no es devuelve un objeto \DateTime');
 
-    }*/
+        }*/
 }

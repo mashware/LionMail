@@ -11,16 +11,17 @@
  * @author Alberto Vioque <mashware@gmail.com>
  */
 
-namespace LionMail\SwiftAdapterBundle\Adapter\SwiftMailer;
+namespace LionMail\SwiftAdapterBundle\Adapter;
 
 use LionMail\LionCoreBundle\Adapter\Interfaces\EnginerMailer;
-use LionMail\SwiftAdapterBundle\Adapter\SwiftMailer\SwiftMessageAdapter;
+use LionMail\SwiftAdapterBundle\Adapter\SwiftMessageAdapter;
 
 /**
  * Class SwiftMailerAdapter
- * @package LionMail\SwiftAdapterBundle\Adapter\SwiftMailer
+ * @package LionMail\SwiftAdapterBundle\Adapter
  */
-class SwiftMailerAdapter implements EnginerMailer {
+class SwiftMailerAdapter implements EnginerMailer
+{
 
     /**
      * swiftMailer
@@ -32,7 +33,8 @@ class SwiftMailerAdapter implements EnginerMailer {
     /**
      * @param \Swift_Mailer $swiftMailer
      */
-    function __construct(\Swift_Mailer $swiftMailer) {
+    function __construct(\Swift_Mailer $swiftMailer)
+    {
         $this->swiftMailer = $swiftMailer;
     }
 
@@ -41,7 +43,8 @@ class SwiftMailerAdapter implements EnginerMailer {
      *
      * @param $message
      */
-    public function sendMessage($message) {
+    public function sendMessage($message)
+    {
         $this->swiftMailer->send($message);
     }
 
@@ -50,7 +53,8 @@ class SwiftMailerAdapter implements EnginerMailer {
      *
      * @return SwiftMessageAdapter
      */
-    public function createMessage() {
+    public function createMessage()
+    {
         $message = new SwiftMessageAdapter(\Swift_Message::newInstance());
 
         return $message;

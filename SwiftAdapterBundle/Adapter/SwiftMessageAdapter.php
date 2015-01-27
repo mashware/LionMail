@@ -1,5 +1,5 @@
 <?php
- 
+
 /**
  * Copyright (c) 2014 Mashware
  *
@@ -11,15 +11,16 @@
  * @author Alberto Vioque <mashware@gmail.com>
  */
 
-namespace LionMail\SwiftAdapterBundle\Adapter\SwiftMailer;
+namespace LionMail\SwiftAdapterBundle\Adapter;
 
 use LionMail\LionCoreBundle\Adapter\Interfaces\LionMessage;
 
 /**
  * Class SwiftMessageAdapter
- * @package LionMail\SwiftAdapterBundle\Adapter\SwiftMailer
+ * @package LionMail\SwiftAdapterBundle\Adapter
  */
-class SwiftMessageAdapter implements LionMessage {
+class SwiftMessageAdapter implements LionMessage
+{
 
     /**
      * @var \Swift_Message
@@ -29,7 +30,8 @@ class SwiftMessageAdapter implements LionMessage {
     /**
      * @param \Swift_Message $swiftMessage
      */
-    function __construct(\Swift_Message $swiftMessage) {
+    function __construct(\Swift_Message $swiftMessage)
+    {
         $this->swiftMessage = $swiftMessage;
     }
 
@@ -42,178 +44,230 @@ class SwiftMessageAdapter implements LionMessage {
      * associated with the address.
      *
      * @param string $addresses
-     * @param string $name      optional
+     * @param string $name optional
      *
      * @return $this self Object
      */
-    public function setFrom($addresses, $name) {
+    public function setFrom($addresses, $name = null)
+    {
         $this->swiftMessage->setFrom($addresses, $name);
 
         return $this;
     }
 
     /**
-     * Gets the from to the email (traducir)
+     * Get the from address of this message.
+     *
+     * @return mixed
+     */
+    public function getFrom()
+    {
+        return $this->swiftMessage->getFrom();
+    }
+
+    /**
+     * Set the to addresses of this message.
+     *
+     * If multiple recipients will receive the message an array should be used.
+     * Example: array('receiver@domain.org', 'other@domain.org' => 'A name')
+     *
+     * If $name is passed and the first parameter is a string, this name will be
+     * associated with the address.
+     *
+     * @param mixed $addresses
+     * @param string $name optional
+     *
+     * @return $this self Object
+     */
+    public function setTo($addresses, $name = null)
+    {
+        $this->swiftMessage->setTo($addresses, $name);
+
+        return $this;
+    }
+
+    /**
+     * Get the To addresses of this message.
      *
      * @return array
      */
-    public function getFrom() {
-        return $this->swiftMessage->getFrom();
+    public function getTo()
+    {
+        return $this->swiftMessage->getTo();
     }
+
     /**
-     * Sets the to of the email (traducir)
+     * Set the Cc addresses of this message.
      *
-     * @param string $to
+     * If $name is passed and the first parameter is a string, this name will be
+     * associated with the address.
+     *
+     * @param mixed $addresses
+     * @param string $name optional
+     *
      * @return $this self Object
      */
-    public function setTo($to) {
-
+    public function setCc($addresses, $name = null)
+    {
+        $this->swiftMessage->setCc($addresses, $name);
 
         return $this;
     }
 
     /**
-     * Gets the to of the email (traducir)
+     * Get the Cc address of this message.
      *
-     * @return string
+     * @return array
      */
-    public function getTo() {
-
+    public function getCc()
+    {
+        return $this->swiftMessage->getCc();
     }
 
     /**
-     * Specifies the addresses of recipients who will be copied in on the message
+     * Set the Bcc addresses of this message.
      *
-     * @param string $cc
+     * If $name is passed and the first parameter is a string, this name will be
+     * associated with the address.
+     *
+     * @param mixed $addresses
+     * @param string $name optional
+     *
      * @return $this self Object
      */
-    public function setCc($cc) {
-
+    public function setBcc($addresses, $name = null)
+    {
+        $this->swiftMessage->setBcc($addresses, $name);
 
         return $this;
     }
 
     /**
-     * Get the addresses of recipients who will be copied in on the message
+     * Get the Bcc addresses of this message.
      *
-     * @return string
+     * @return array
      */
-    public function getCc() {
-
+    public function getBcc()
+    {
+        return $this->swiftMessage->getBcc();
     }
 
     /**
-     * Specifies the addresses of recipients who the message will be blind-copied to. Other recipients will not be aware of these copies.
-     *
-     * @param string $bcc
-     * @return $this self Object
-     */
-    public function setBcc($bcc) {
-
-        return $this;
-    }
-
-    /**
-     * Gets the addresses of recipients who the message will be blind-copied to. Other recipients will not be aware of these copies.
-     *
-     * @return string
-     */
-    public function getBcc() {
-
-    }
-
-    /**
-     * Specifies the subject line that is displayed in the recipients' mail client (traducir)
+     * Set the subject of this message.
      *
      * @param string $subject
      * @return $this self Object
      */
-    public function setSubject($subject) {
-
+    public function setSubject($subject)
+    {
+        $this->swiftMessage->setSubject($subject);
 
         return $this;
     }
 
     /**
-     * Get the subject line that is displayed in the recipients' mail client (traducir)
+     * Get the subject of this message.
      *
      * @return string
      */
-    public function getSubject() {
-
+    public function getSubject()
+    {
+        return $this->swiftMessage->getSubject();
     }
 
     /**
-     * Sets the body to the email (traducir)
+     * Set the body of this entity, either as a string, or as an instance of
+     * {@link Swift_OutputByteStream}.
      *
-     * @param string $body
+     * @param mixed $body
+     * @param string $contentType optional
+     * @param string $charset optional
+     *
      * @return $this self Object
      */
-    public function setBody($body) {
-
+    public function setBody($body, $contentType = null, $charset = null)
+    {
+        $this->swiftMessage->setBody($body, $contentType, $charset);
 
         return $this;
     }
 
     /**
-     * Gets the body to the email (traducir)
+     * Get the body of this entity as a string.
      *
      * @return string
      */
-    public function getBody() {
-
+    public function getBody()
+    {
+        return $this->swiftMessage->getBody();
     }
 
     /**
-     * Specifies the address of the person who physically sent the message (higher precedence than From:)
+     * Set the sender of this message.
      *
-     * @param string $sender
+     * This does not override the From field, but it has a higher significance.
+     *
+     * @param string $address
+     * @param string $name optional
+     *
      * @return $this self Object
      */
-    public function setSender($sender) {
-
+    public function setSender($address, $name = null)
+    {
+        $this->swiftMessage->setSender($address, $name);
 
         return $this;
     }
 
     /**
-     * Get the address of the person who physically sent the message (higher precedence than From:)
+     * Get the sender of this message.
      *
      * @return string
      */
-    public function getSender() {
-
+    public function getSender()
+    {
+        return $this->swiftMessage->getSender();
     }
 
     /**
-     * Reply-To Specifies the address where replies are sent to getReplyTo() (traducir)
+     * Set the reply-to address of this message.
      *
-     * @param string $replyTo
+     * You may pass an array of addresses if replies will go to multiple people.
+     *
+     * If $name is passed and the first parameter is a string, this name will be
+     * associated with the address.
+     *
+     * @param string $addresses
+     * @param string $name optional
+     *
      * @return $this self Object
      */
-    public function setReplyTo($replyTo) {
-
+    public function setReplyTo($addresses, $name = null)
+    {
+        $this->swiftMessage->setReplyTo($addresses, $name);
 
         return $this;
     }
 
     /**
-     * Gets the address where replies are sent to getReplyTo() (traducir)
+     * Get the body of this entity as a string.
      *
      * @return string
      */
-    public function getReplyTo() {
-
+    public function getReplyTo()
+    {
+        return $this->swiftMessage->getReplyTo();
     }
 
     /**
-     * Date Specifies the date at which the message was sent getDate()
+     * Set the date at which this message was created.
      *
      * @param \DateTime $date
      * @return $this self Object
      */
-    public function setDate(\DateTime $date) {
-
+    public function setDate(\DateTime $date)
+    {
+        $this->swiftMessage->setDate($date->getTimestamp());
 
         return $this;
     }
@@ -223,35 +277,46 @@ class SwiftMessageAdapter implements LionMessage {
      *
      * @return \DateTime
      */
-    public function getDate() {
+    public function getDate()
+    {
+        $date = $this->swiftMessage->getDate();
+        $dateTime = new \DateTime('@'.$date);
+
+        return $dateTime;
     }
 
     /**
-     * Specifies the format of the message (usually text/plain or text/html)
+     * Set the Content-type of this entity.
      *
-     * @param string $contentType
+     * @param string $type
      * @return $this self Object
      */
-    public function setContentType($contentType) {
+    public function setContentType($type)
+    {
+        $this->swiftMessage->setContentType($type);
 
         return $this;
     }
 
     /**
-     * Get the format of the message (usually text/plain or text/html)
+     * Get the Content-type of this entity.
      *
      * @return string
      */
-    public function getContentType() {
+    public function getContentType()
+    {
+        return $this->swiftMessage->getContentType();
     }
 
     /**
-     * All MIME entities (including a message) have a toString() method that you can call if you want to take a look at what is going to be sent. (traducir)
+     * Returns a string representation of this object.
+     *
+     * @see toString()
      *
      * @return string
      */
-    public function __toString(){
-
+    public function __toString()
+    {
+        return $this->swiftMessage->__toString();
     }
-
 }
