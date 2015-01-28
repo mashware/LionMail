@@ -13,30 +13,30 @@
 
 namespace LionMail\LionCoreBundle\Services;
 
-use LionMail\LionCoreBundle\Adapter\Interfaces\EnginerMailer;
+use LionMail\LionCoreBundle\Adapter\Interfaces\Mailer;
 use LionMail\LionCoreBundle\Adapter\Interfaces\Message;
 
 /**
- * Class Enginer
+ * Class LionMail
  *
  * @package LionMail\LionCoreBundle\Services
  */
-class Enginer implements EnginerMailer
+class LionMail implements Mailer
 {
 
     /**
      * Adaptador elegido por el usuario (traducir)
      *
-     * @var EnginerMailer
+     * @var Mailer
      */
-    private $enginerMailerAdapter;
+    private $mailerAdapter;
 
     /**
-     * @param EnginerMailer $enginerMailerAdapter
+     * @param Mailer $mailerAdapter
      */
-    function __construct(EnginerMailer $enginerMailerAdapter)
+    function __construct(Mailer $mailerAdapter)
     {
-        $this->enginerMailerAdapter = $enginerMailerAdapter;
+        $this->mailerAdapter = $mailerAdapter;
     }
 
     /**
@@ -46,7 +46,7 @@ class Enginer implements EnginerMailer
      */
     public function sendMessage($message)
     {
-        $this->enginerMailerAdapter->sendMessage($message);
+        $this->mailerAdapter->sendMessage($message);
     }
 
     /**
@@ -56,7 +56,7 @@ class Enginer implements EnginerMailer
      */
     public function createMessage()
     {
-        return $this->enginerMailerAdapter->createMessage();
+        return $this->mailerAdapter->createMessage();
     }
 
 

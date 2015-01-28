@@ -13,25 +13,25 @@
 
 namespace LionMail\LionCoreBundle\Tests\Services;
 
-use LionMail\LionCoreBundle\Services\Enginer;
+use LionMail\LionCoreBundle\Services\LionMail;
 
 /**
  * Class Enginer
  *
  * @package LionMail\LionCoreBundle\Tests\Services
  */
-class EnginerTest extends \PHPUnit_Framework_TestCase
+class LionMailTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * @var EnginerMailer
+     * @var LionMail
      */
-    private $enginer;
+    private $lionMail;
 
     /**
-     * @var EnginerMailer
+     * @var Mailer
      */
-    private $enginerMailer;
+    private $mailer;
 
     /**
      * @var Message
@@ -41,18 +41,18 @@ class EnginerTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->message = $this->getMock('LionMail\LionCoreBundle\Adapter\Interfaces\Message');
-        $this->enginerMailer = $this->getMock('LionMail\LionCoreBundle\Adapter\Interfaces\EnginerMailer');
+        $this->mailer = $this->getMock('LionMail\LionCoreBundle\Adapter\Interfaces\Mailer');
 
-        $this->enginer = new Enginer($this->enginerMailer);
+        $this->lionMail = new LionMail($this->mailer);
     }
 
     public function testCreateMessageReturnInstanceOfLionMessage()
     {
-        $this->enginerMailer->expects($this->once())
+        $this->mailer->expects($this->once())
             ->method('createMessage')
             ->will($this->returnValue($this->message));
 
-        $messageCreated = $this->enginer->createMessage();
+        $messageCreated = $this->lionMail->createMessage();
 
         $this->assertInstanceOf('LionMail\LionCoreBundle\Adapter\Interfaces\Message', $messageCreated);
     }

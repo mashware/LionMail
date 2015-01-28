@@ -14,11 +14,11 @@
 namespace LionMail\LionCoreBundle\Adapter\Interfaces;
 
 /**
- * Interface EnginerMailer
+ * Interface Mailer
  *
  * @package LionMail\LionCoreBundle\Adapter\Interfaces
  */
-interface EnginerMailer
+interface Mailer
 {
 
     /**

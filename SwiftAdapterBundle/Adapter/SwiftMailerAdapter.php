@@ -13,14 +13,14 @@
 
 namespace LionMail\SwiftAdapterBundle\Adapter;
 
-use LionMail\LionCoreBundle\Adapter\Interfaces\EnginerMailer;
+use LionMail\LionCoreBundle\Adapter\Interfaces\Mailer;
 use LionMail\SwiftAdapterBundle\Adapter\SwiftMessageAdapter;
 
 /**
  * Class SwiftMailerAdapter
  * @package LionMail\SwiftAdapterBundle\Adapter
  */
-class SwiftMailerAdapter implements EnginerMailer
+class SwiftMailerAdapter implements Mailer
 {
 
     /**

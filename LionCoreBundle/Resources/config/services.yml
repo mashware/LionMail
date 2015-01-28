@@ -3,8 +3,8 @@ services:
         class: %lion_core.swift.mailer.adapter.class%
         arguments:
             swift.mailer: @mailer
-
-    lion_core.enginer:
-        class: %lion_core.enginer.class%
+# Mash: Esto debería estar en el config del usuario o en algún lado por defecto, no aquí
+    lion_core.lion_mail:
+        class: %lion_core.lion_mail.class%
         arguments:
             enginer.mailer.adapter: @lion_core.swift_mailer_adapter
