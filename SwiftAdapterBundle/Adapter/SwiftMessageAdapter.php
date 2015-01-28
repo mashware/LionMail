@@ -13,13 +13,13 @@
 
 namespace LionMail\SwiftAdapterBundle\Adapter;
 
-use LionMail\LionCoreBundle\Adapter\Interfaces\LionMessage;
+use LionMail\LionCoreBundle\Adapter\Interfaces\Message;
 
 /**
  * Class SwiftMessageAdapter
  * @package LionMail\SwiftAdapterBundle\Adapter
  */
-class SwiftMessageAdapter implements LionMessage
+class SwiftMessageAdapter implements Message
 {
 
     /**

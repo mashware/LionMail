@@ -34,13 +34,13 @@ class EnginerTest extends \PHPUnit_Framework_TestCase
     private $enginerMailer;
 
     /**
-     * @var LionMessage
+     * @var Message
      */
-    private $lionMessage;
+    private $message;
 
     public function setUp()
     {
-        $this->lionMessage = $this->getMock('LionMail\LionCoreBundle\Adapter\Interfaces\LionMessage');
+        $this->message = $this->getMock('LionMail\LionCoreBundle\Adapter\Interfaces\Message');
         $this->enginerMailer = $this->getMock('LionMail\LionCoreBundle\Adapter\Interfaces\EnginerMailer');
 
         $this->enginer = new Enginer($this->enginerMailer);
@@ -50,10 +50,10 @@ class EnginerTest extends \PHPUnit_Framework_TestCase
     {
         $this->enginerMailer->expects($this->once())
             ->method('createMessage')
-            ->will($this->returnValue($this->lionMessage));
+            ->will($this->returnValue($this->message));
 
         $messageCreated = $this->enginer->createMessage();
 
-        $this->assertInstanceOf('LionMail\LionCoreBundle\Adapter\Interfaces\LionMessage', $messageCreated);
+        $this->assertInstanceOf('LionMail\LionCoreBundle\Adapter\Interfaces\Message', $messageCreated);
     }
 }

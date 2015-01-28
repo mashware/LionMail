@@ -14,7 +14,7 @@
 namespace LionMail\LionCoreBundle\Services;
 
 use LionMail\LionCoreBundle\Adapter\Interfaces\EnginerMailer;
-use LionMail\LionCoreBundle\Adapter\Interfaces\LionMessage;
+use LionMail\LionCoreBundle\Adapter\Interfaces\Message;
 
 /**
  * Class Enginer
@@ -42,7 +42,7 @@ class Enginer implements EnginerMailer
     /**
      * Send the menssage
      *
-     * @param LionMessage $message
+     * @param Message $message
      */
     public function sendMessage($message)
     {
@@ -50,9 +50,9 @@ class Enginer implements EnginerMailer
     }
 
     /**
-     * Create instance of LionMessage
+     * Create instance of Message
      *
-     * @return LionMessage
+     * @return Message
      */
     public function createMessage()
     {

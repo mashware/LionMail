@@ -29,9 +29,9 @@ interface EnginerMailer
     public function sendMessage($message);
 
     /**
-     * Create instance of LionMessage
+     * Create instance of Message
      *
-     * @return LionMessage
+     * @return Message
      */
     public function createMessage();
 }

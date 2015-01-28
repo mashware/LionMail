@@ -14,10 +14,10 @@
 namespace LionMail\LionCoreBundle\Adapter\Interfaces;
 
 /**
- * Interface LionMessage
+ * Interface Message
  * @package LionMail\LionCoreBundle\Adapter\Interfaces
  */
-interface LionMessage
+interface Message
 {
 
     /**
