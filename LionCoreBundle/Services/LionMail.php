@@ -44,7 +44,7 @@ class LionMail implements Mailer
      *
      * @param Message $message
      */
-    public function sendMessage($message)
+    public function sendMessage(Message $message)
     {
         $this->mailerAdapter->sendMessage($message);
     }

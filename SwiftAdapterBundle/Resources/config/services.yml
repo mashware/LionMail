@@ -1,5 +1,5 @@
 services:
     swift_mailer_adapter:
-        class: %swift_adapter.swift.mailer.adapter.class%
+        class: LionMail\SwiftAdapterBundle\Adapter\SwiftMailerAdapter
         arguments:
             swift.mailer: @mailer

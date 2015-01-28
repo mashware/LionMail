@@ -24,9 +24,9 @@ interface Mailer
     /**
      * Send the menssage
      *
-     * @param $message
+     * @param Message $message
      */
-    public function sendMessage($message);
+    public function sendMessage(Message $message);
 
     /**
      * Create instance of Message
