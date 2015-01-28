@@ -1,4 +1,3 @@
 parameters:
     lion_core.lion_mail.class: "\LionMail\\LionCoreBundle\\Services\\LionMail"
-    lion_core.swift.mailer.adapter.class: "\LionMail\\LionCoreBundle\\Adapter\\SwiftMailerAdapter"
 

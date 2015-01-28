@@ -1,0 +1,3 @@
+parameters:
+    swift_adapter.swift.mailer.adapter.class: "\LionMail\\SwiftAdapterBundle\\Adapter\\SwiftMailerAdapter"
+
