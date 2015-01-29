@@ -14,6 +14,7 @@
 namespace LionMail\SwiftAdapterBundle\Adapter;
 
 use LionMail\LionCoreBundle\Adapter\Interfaces\Mailer;
+use LionMail\LionCoreBundle\Adapter\Interfaces\Message;
 use LionMail\SwiftAdapterBundle\Adapter\SwiftMessageAdapter;
 
 /**
@@ -41,9 +42,9 @@ class SwiftMailerAdapter implements Mailer
     /**
      * Send the menssage
      *
-     * @param $message
+     * @param Message $message
      */
-    public function sendMessage($message)
+    public function sendMessage(Message $message)
     {
         $this->swiftMailer->send($message);
     }
