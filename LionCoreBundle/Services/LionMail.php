@@ -58,6 +58,4 @@ class LionMail implements Mailer
     {
         return $this->mailerAdapter->createMessage();
     }
-
-
 }

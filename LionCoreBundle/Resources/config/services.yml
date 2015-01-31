@@ -3,4 +3,5 @@ services:
     lion_mail:
         class: %lion_core.lion_mail.class%
         arguments:
-            mailer.adapter: @swift_mailer_adapter
+            mailer.adapter: @=service(parameter('mailer_adapter'))
+
