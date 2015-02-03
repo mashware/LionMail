@@ -1,7 +1,12 @@
 services:
 # Mash: Esto debería estar en el config del usuario o en algún lado por defecto, no aquí
+    lion_mail.send.event.dispatcher:
+        class: LionMail\LionCoreBundle\Services\SendMailEventDispatcher
+        arguments:
+            event.dispatcher: @event_dispatcher
+
     lion_mail:
         class: %lion_core.lion_mail.class%
         arguments:
             mailer.adapter: @=service(parameter('mailer_adapter'))
-
+            send.email.event.dispatcher: @lion_mail.send.event.dispatcher

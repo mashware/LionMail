@@ -15,6 +15,8 @@ namespace LionMail\LionCoreBundle\Services;
 
 use LionMail\LionCoreBundle\Adapter\Interfaces\Mailer;
 use LionMail\LionCoreBundle\Adapter\Interfaces\Message;
+use LionMail\LionCoreBundle\Services\SendMailEventDispatcher;
+
 
 /**
  * Class LionMail
@@ -32,11 +34,20 @@ class LionMail implements Mailer
     private $mailerAdapter;
 
     /**
-     * @param Mailer $mailerAdapter
+     * @var SendMailEventDispatcher
+     *
+     * Notification event dispatcher
      */
-    function __construct(Mailer $mailerAdapter)
+    protected $sendMailEventDispatcher;
+
+    /**
+     * @param Mailer $mailerAdapter
+     * @param SendMailEventDispatcher $sendMailEventDispatcher
+     */
+    function __construct(Mailer $mailerAdapter, SendMailEventDispatcher $sendMailEventDispatcher)
     {
         $this->mailerAdapter = $mailerAdapter;
+        $this->sendMailEventDispatcher = $sendMailEventDispatcher;
     }
 
     /**
@@ -46,7 +57,16 @@ class LionMail implements Mailer
      */
     public function sendMessage(Message $message)
     {
-        $this->mailerAdapter->sendMessage($message);
+        $this
+            ->sendMailEventDispatcher
+            ->notifyPreSendMail();
+
+        echo "- Envío";
+        //$this->mailerAdapter->sendMessage($message);
+
+        $this
+            ->sendMailEventDispatcher
+            ->notifyPostSendMail();
     }
 
     /**
