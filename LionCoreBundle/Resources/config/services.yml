@@ -1,6 +1,0 @@
-services:
-# Mash: Esto debería estar en el config del usuario o en algún lado por defecto, no aquí
-    lion_mail:
-        class: %lion_mail.class%
-        arguments:
-            mailer.adapter: %mailer.adapter%

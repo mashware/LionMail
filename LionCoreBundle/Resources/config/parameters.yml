@@ -1,3 +1,0 @@
-parameters:
-    lion_core.lion_mail.class: "\LionMail\\LionCoreBundle\\Services\\LionMail"
-

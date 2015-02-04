@@ -1,0 +1,12 @@
+services:
+# Mash: Esto debería estar en el config del usuario o en algún lado por defecto, no aquí
+    zen_mail.send.event.dispatcher:
+        class: ZenMail\ZenCoreBundle\Services\SendMailEventDispatcher
+        arguments:
+            event.dispatcher: @event_dispatcher
+
+    zen_mail:
+        class: %zen_core.zen_mail.class%
+        arguments:
+            mailer.adapter: @=service(parameter('mailer_adapter'))
+            send.email.event.dispatcher: @zen_mail.send.event.dispatcher
