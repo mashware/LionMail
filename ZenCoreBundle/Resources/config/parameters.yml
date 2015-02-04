@@ -1,0 +1,3 @@
+parameters:
+    zen_core.zen_mail.class: "ZenMail\\ZenCoreBundle\\Services\\ZenMail"
+
