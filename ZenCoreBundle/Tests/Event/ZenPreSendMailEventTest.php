@@ -11,7 +11,7 @@
  * @author Alberto Vioque <mashware@gmail.com>
  */
 
-namespace  ZenMail\ZenCoreBundle\Tests\Event;
+namespace ZenMail\ZenCoreBundle\Tests\Event;
 
 use Symfony\Component\EventDispatcher\Event;
 use ZenMail\ZenCoreBundle\Event\ZenPreSendMailEvent;
@@ -29,7 +29,8 @@ class ZenPreSendMailEventTest extends \PHPUnit_Framework_TestCase
      */
     private $event;
 
-    public function setUp(){
+    public function setUp()
+    {
         $this->event = new ZenPreSendMailEvent();
     }
 

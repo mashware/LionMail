@@ -50,7 +50,7 @@ class ZenManagerTest extends \PHPUnit_Framework_TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->zenManager = new ZenManager($this->zenMailer, $this->sendMailEventDispatcher );
+        $this->zenManager = new ZenManager($this->zenMailer, $this->sendMailEventDispatcher);
     }
 
     public function testCreateZenMessageReturnInstanceOfZenMessage()

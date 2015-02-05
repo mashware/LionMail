@@ -44,14 +44,14 @@ class ZenSwiftMessageAdapterTest extends \PHPUnit_Framework_TestCase
         self::$zenSwiftMessageAdapter = new ZenSwiftMessageAdapter($swiftMessage);
 
         self::$emails = array(
-            'dummy@dummy.com'  => 'Dummy',
+            'dummy@dummy.com' => 'Dummy',
             'dummy2@dummy.com',
             'dummy3@dummy.com',
             'dummy4@dummy.com' => 'Dummy 4'
         );
 
         self::$emailsReturn = array(
-            'dummy@dummy.com'  => "Dummy",
+            'dummy@dummy.com' => "Dummy",
             'dummy2@dummy.com' => NULL,
             'dummy3@dummy.com' => NULL,
             'dummy4@dummy.com' => "Dummy 4"
@@ -83,7 +83,7 @@ class ZenSwiftMessageAdapterTest extends \PHPUnit_Framework_TestCase
     public function testSetOnlyOneFromWithName()
     {
         $email = 'mashware@gmail.com';
-        $name  = "Alberto";
+        $name = "Alberto";
         $emailReturn = array(
             $email => $name
         );
@@ -121,7 +121,8 @@ class ZenSwiftMessageAdapterTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(self::$emailsReturn, self::$zenSwiftMessageAdapter->getReplyTo(), 'Test SetMultipleFrom ReplyTo');
     }
 
-    public function testSetSubject(){
+    public function testSetSubject()
+    {
         $subject = 'My subject';
 
         self::$zenSwiftMessageAdapter->setSubject($subject);
@@ -130,7 +131,8 @@ class ZenSwiftMessageAdapterTest extends \PHPUnit_Framework_TestCase
 
     }
 
-    public function testSetOnlyBody(){
+    public function testSetOnlyBody()
+    {
         $body = 'My body';
 
         self::$zenSwiftMessageAdapter->setBody($body);
@@ -138,7 +140,8 @@ class ZenSwiftMessageAdapterTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($body, self::$zenSwiftMessageAdapter->getBody());
     }
 
-    public function testSetBodyAndContentType(){
+    public function testSetBodyAndContentType()
+    {
         $body = 'My body';
         $contentType = 'text/html';
 
@@ -148,7 +151,8 @@ class ZenSwiftMessageAdapterTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($contentType, self::$zenSwiftMessageAdapter->getContentType());
     }
 
-    public function testSetBodyAndContentTypeAndCharset(){
+    public function testSetBodyAndContentTypeAndCharset()
+    {
         $body = 'My body';
         $contentType = 'text/html';
         $charset = 'iso-8859-2';
@@ -158,7 +162,8 @@ class ZenSwiftMessageAdapterTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($body, self::$zenSwiftMessageAdapter->getBody());
     }
 
-    public function testSetDate(){
+    public function testSetDate()
+    {
         $date = new \DateTime('now');
 
         self::$zenSwiftMessageAdapter->setDate($date);
@@ -166,7 +171,8 @@ class ZenSwiftMessageAdapterTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($date->getTimestamp(), self::$zenSwiftMessageAdapter->getDate()->getTimestamp());
     }
 
-    public function testSetContentType(){
+    public function testSetContentType()
+    {
         $contentType = 'text/plain';
 
         self::$zenSwiftMessageAdapter->setContentType($contentType);
@@ -174,7 +180,8 @@ class ZenSwiftMessageAdapterTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($contentType, self::$zenSwiftMessageAdapter->getContentType());
     }
 
-    public function testToString(){
+    public function testToString()
+    {
         $this->assertNotNull(self::$zenSwiftMessageAdapter->__toString());
     }
 }

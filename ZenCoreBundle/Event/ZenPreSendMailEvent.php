@@ -11,7 +11,7 @@
  * @author Alberto Vioque <mashware@gmail.com>
  */
 
-namespace  ZenMail\ZenCoreBundle\Event;
+namespace ZenMail\ZenCoreBundle\Event;
 
 use Symfony\Component\EventDispatcher\Event;
 

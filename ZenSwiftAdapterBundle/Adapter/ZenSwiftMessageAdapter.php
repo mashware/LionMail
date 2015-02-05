@@ -280,7 +280,7 @@ class ZenSwiftMessageAdapter implements ZenMessage
     public function getDate()
     {
         $date = $this->swiftMessage->getDate();
-        $dateTime = new \DateTime('@'.$date);
+        $dateTime = new \DateTime('@' . $date);
 
         return $dateTime;
     }
