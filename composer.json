@@ -25,9 +25,6 @@
         "symfony/event-dispatcher": ">=2.2.3"
 
     },
-    "require-dev": {
-        "phpunit/phpunit": "3.7.*"
-    },
     "replace": {
         "zenmail/zen-core-bundle": "self.version",
         "zenmail/zen-swift-adapter-bundle": "self.version"
