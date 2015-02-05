@@ -1,5 +1,5 @@
 {
-    "name": "zenmail",
+    "name": "zenmail/zenmail",
     "type": "symfony-bundle",
     "description": "ZenMail, admin send email",
     "keywords": ["Send email", "email", "mail"],
