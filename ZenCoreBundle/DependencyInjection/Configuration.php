@@ -2,7 +2,7 @@
 
 namespace ZenMail\ZenCoreBundle\DependencyInjection;
 
-use ZenMail\SwiftAdapterBundle\Tests\Adapter\SwiftZenMailerAdapterTest;
+
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
