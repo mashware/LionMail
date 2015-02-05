@@ -1,0 +1,3 @@
+parameters:
+    zen.swift.mailer.adapter: "ZenMail\\ZenSwiftAdapterBundle\\Adapter\\ZenSwiftMailerAdapter"
+

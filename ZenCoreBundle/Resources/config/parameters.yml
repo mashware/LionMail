@@ -1,3 +1,4 @@
 parameters:
-    zen_core.zen_mail.class: "ZenMail\\ZenCoreBundle\\Services\\ZenMail"
+    zen.manager.class: "ZenMail\\ZenCoreBundle\\Services\\ZenManager"
+    zen.event.dispatcher.class: "ZenMail\\ZenCoreBundle\\Services\\ZenEventDispatcher"
 

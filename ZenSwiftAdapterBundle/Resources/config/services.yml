@@ -1,5 +1,5 @@
 services:
     zen_swift_mailer_adapter:
-        class: ZenMail\ZenSwiftAdapterBundle\Adapter\SwiftMailerAdapter
+        class: %zen.swift.mailer.adapter%
         arguments:
             swift.mailer: @mailer

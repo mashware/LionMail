@@ -11,29 +11,14 @@
  * @author Alberto Vioque <mashware@gmail.com>
  */
 
-namespace ZenMail\ZenSwiftAdapterBundle\Adapter;
-
-use ZenMail\ZenCoreBundle\Adapter\Interfaces\Message;
+namespace ZenMail\ZenCoreBundle\Adapter\Interfaces;
 
 /**
- * Class SwiftMessageAdapter
- * @package ZenMail\ZenSwiftAdapterBundle\Adapter
+ * Interface ZenMessage
+ * @package ZenMail\ZenCoreBundle\Adapter\Interfaces
  */
-class SwiftMessageAdapter implements Message
+interface ZenMessage
 {
-
-    /**
-     * @var \Swift_Message
-     */
-    private $swiftMessage;
-
-    /**
-     * @param \Swift_Message $swiftMessage
-     */
-    function __construct(\Swift_Message $swiftMessage)
-    {
-        $this->swiftMessage = $swiftMessage;
-    }
 
     /**
      * Set the from address of this message.
@@ -48,22 +33,14 @@ class SwiftMessageAdapter implements Message
      *
      * @return $this self Object
      */
-    public function setFrom($addresses, $name = null)
-    {
-        $this->swiftMessage->setFrom($addresses, $name);
-
-        return $this;
-    }
+    public function setFrom($addresses, $name = null);
 
     /**
      * Get the from address of this message.
      *
      * @return mixed
      */
-    public function getFrom()
-    {
-        return $this->swiftMessage->getFrom();
-    }
+    public function getFrom();
 
     /**
      * Set the to addresses of this message.
@@ -79,22 +56,14 @@ class SwiftMessageAdapter implements Message
      *
      * @return $this self Object
      */
-    public function setTo($addresses, $name = null)
-    {
-        $this->swiftMessage->setTo($addresses, $name);
-
-        return $this;
-    }
+    public function setTo($addresses, $name = null);
 
     /**
      * Get the To addresses of this message.
      *
      * @return array
      */
-    public function getTo()
-    {
-        return $this->swiftMessage->getTo();
-    }
+    public function getTo();
 
     /**
      * Set the Cc addresses of this message.
@@ -107,22 +76,14 @@ class SwiftMessageAdapter implements Message
      *
      * @return $this self Object
      */
-    public function setCc($addresses, $name = null)
-    {
-        $this->swiftMessage->setCc($addresses, $name);
-
-        return $this;
-    }
+    public function setCc($addresses, $name = null);
 
     /**
      * Get the Cc address of this message.
      *
      * @return array
      */
-    public function getCc()
-    {
-        return $this->swiftMessage->getCc();
-    }
+    public function getCc();
 
     /**
      * Set the Bcc addresses of this message.
@@ -135,22 +96,14 @@ class SwiftMessageAdapter implements Message
      *
      * @return $this self Object
      */
-    public function setBcc($addresses, $name = null)
-    {
-        $this->swiftMessage->setBcc($addresses, $name);
-
-        return $this;
-    }
+    public function setBcc($addresses, $name = null);
 
     /**
      * Get the Bcc addresses of this message.
      *
      * @return array
      */
-    public function getBcc()
-    {
-        return $this->swiftMessage->getBcc();
-    }
+    public function getBcc();
 
     /**
      * Set the subject of this message.
@@ -158,22 +111,14 @@ class SwiftMessageAdapter implements Message
      * @param string $subject
      * @return $this self Object
      */
-    public function setSubject($subject)
-    {
-        $this->swiftMessage->setSubject($subject);
-
-        return $this;
-    }
+    public function setSubject($subject);
 
     /**
      * Get the subject of this message.
      *
      * @return string
      */
-    public function getSubject()
-    {
-        return $this->swiftMessage->getSubject();
-    }
+    public function getSubject();
 
     /**
      * Set the body of this entity, either as a string, or as an instance of
@@ -185,22 +130,14 @@ class SwiftMessageAdapter implements Message
      *
      * @return $this self Object
      */
-    public function setBody($body, $contentType = null, $charset = null)
-    {
-        $this->swiftMessage->setBody($body, $contentType, $charset);
-
-        return $this;
-    }
+    public function setBody($body, $contentType = null, $charset = null);
 
     /**
-     * Get the body of this entity as a string.
+     * Gets the body to the email (traducir)
      *
      * @return string
      */
-    public function getBody()
-    {
-        return $this->swiftMessage->getBody();
-    }
+    public function getBody();
 
     /**
      * Set the sender of this message.
@@ -212,22 +149,14 @@ class SwiftMessageAdapter implements Message
      *
      * @return $this self Object
      */
-    public function setSender($address, $name = null)
-    {
-        $this->swiftMessage->setSender($address, $name);
-
-        return $this;
-    }
+    public function setSender($address, $name = null);
 
     /**
      * Get the sender of this message.
      *
      * @return string
      */
-    public function getSender()
-    {
-        return $this->swiftMessage->getSender();
-    }
+    public function getSender();
 
     /**
      * Set the reply-to address of this message.
@@ -242,22 +171,14 @@ class SwiftMessageAdapter implements Message
      *
      * @return $this self Object
      */
-    public function setReplyTo($addresses, $name = null)
-    {
-        $this->swiftMessage->setReplyTo($addresses, $name);
-
-        return $this;
-    }
+    public function setReplyTo($addresses, $name = null);
 
     /**
      * Get the body of this entity as a string.
      *
      * @return string
      */
-    public function getReplyTo()
-    {
-        return $this->swiftMessage->getReplyTo();
-    }
+    public function getReplyTo();
 
     /**
      * Set the date at which this message was created.
@@ -265,25 +186,14 @@ class SwiftMessageAdapter implements Message
      * @param \DateTime $date
      * @return $this self Object
      */
-    public function setDate(\DateTime $date)
-    {
-        $this->swiftMessage->setDate($date->getTimestamp());
-
-        return $this;
-    }
+    public function setDate(\DateTime $date);
 
     /**
      * Get the date at which the message was sent getDate() (traducir)
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
-        $date = $this->swiftMessage->getDate();
-        $dateTime = new \DateTime('@'.$date);
-
-        return $dateTime;
-    }
+    public function getDate();
 
     /**
      * Set the Content-type of this entity.
@@ -291,22 +201,14 @@ class SwiftMessageAdapter implements Message
      * @param string $type
      * @return $this self Object
      */
-    public function setContentType($type)
-    {
-        $this->swiftMessage->setContentType($type);
-
-        return $this;
-    }
+    public function setContentType($type);
 
     /**
      * Get the Content-type of this entity.
      *
      * @return string
      */
-    public function getContentType()
-    {
-        return $this->swiftMessage->getContentType();
-    }
+    public function getContentType();
 
     /**
      * Returns a string representation of this object.
@@ -315,8 +217,5 @@ class SwiftMessageAdapter implements Message
      *
      * @return string
      */
-    public function __toString()
-    {
-        return $this->swiftMessage->__toString();
-    }
+    public function __toString();
 }

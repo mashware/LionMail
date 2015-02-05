@@ -13,15 +13,15 @@
 
 namespace ZenMail\ZenSwiftAdapterBundle\Adapter;
 
-use ZenMail\ZenCoreBundle\Adapter\Interfaces\Mailer;
-use ZenMail\ZenCoreBundle\Adapter\Interfaces\Message;
-use ZenMail\ZenSwiftAdapterBundle\Adapter\SwiftMessageAdapter;
+use ZenMail\ZenCoreBundle\Adapter\Interfaces\ZenMailer;
+use ZenMail\ZenCoreBundle\Adapter\Interfaces\ZenMessage;
+use ZenMail\ZenSwiftAdapterBundle\Adapter\ZenSwiftMessageAdapter;
 
 /**
- * Class SwiftMailerAdapter
+ * Class ZenSwiftMailerAdapter
  * @package ZenMail\ZenSwiftAdapterBundle\Adapter
  */
-class SwiftMailerAdapter implements Mailer
+class ZenSwiftMailerAdapter implements ZenMailer
 {
 
     /**
@@ -42,9 +42,9 @@ class SwiftMailerAdapter implements Mailer
     /**
      * Send the menssage
      *
-     * @param Message $message
+     * @param ZenMessage $message
      */
-    public function sendMessage(Message $message)
+    public function sendMessage(ZenMessage $message)
     {
         $this->swiftMailer->send($message);
     }
@@ -52,11 +52,11 @@ class SwiftMailerAdapter implements Mailer
     /**
      * Create instance of SwiftMessage
      *
-     * @return SwiftMessageAdapter
+     * @return ZenSwiftMessageAdapter
      */
     public function createMessage()
     {
-        $message = new SwiftMessageAdapter(\Swift_Message::newInstance());
+        $message = new ZenSwiftMessageAdapter(\Swift_Message::newInstance());
 
         return $message;
     }

@@ -11,15 +11,15 @@
  * @author Alberto Vioque <mashware@gmail.com>
  */
 
-namespace  ZenMail\ZenCoreBundle\Tests\Event;
+namespace  ZenMail\ZenCoreBundle\Event;
 
 use Symfony\Component\EventDispatcher\Event;
 
 /**
- * Class ZenMailPostSendEvent
+ * Class ZenPreSendMailEvent
  * @package ZenMail\ZenCoreBundle\Event
  */
-class ZenMailPostSendEvent extends Event
+class ZenPreSendMailEvent extends Event
 {
 
 }

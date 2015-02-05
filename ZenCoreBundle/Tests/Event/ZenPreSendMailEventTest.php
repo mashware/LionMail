@@ -14,22 +14,23 @@
 namespace  ZenMail\ZenCoreBundle\Tests\Event;
 
 use Symfony\Component\EventDispatcher\Event;
-use ZenMail\ZenCoreBundle\Event\ZenMailPreSendEvent;
-    /**
- * Class ZenMailPreSendEvent
- * @package ZenMail\ZenCoreBundle\Event
+use ZenMail\ZenCoreBundle\Event\ZenPreSendMailEvent;
+
+/**
+ * Class ZenPreSendMailEventTest
+ * @package ZenMail\ZenCoreBundle\Tests\Event
  */
-class ZenMailPreSendEventTest extends \PHPUnit_Framework_TestCase
+class ZenPreSendMailEventTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var ZenMailPreSendEvent
+     * @var ZenPreSendMailEvent
      *
      * Object to test
      */
     private $event;
 
     public function setUp(){
-        $this->event = new ZenMailPreSendEvent();
+        $this->event = new ZenPreSendMailEvent();
     }
 
     /**
@@ -39,5 +40,4 @@ class ZenMailPreSendEventTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf('Symfony\Component\EventDispatcher\Event', $this->event);
     }
-
 }

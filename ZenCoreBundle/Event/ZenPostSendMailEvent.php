@@ -16,10 +16,10 @@ namespace  ZenMail\ZenCoreBundle\Event;
 use Symfony\Component\EventDispatcher\Event;
 
 /**
- * Class ZenMailPostSendEvent
+ * Class ZenPostSendMailEvent
  * @package ZenMail\ZenCoreBundle\Event
  */
-class ZenMailPostSendEvent extends Event
+class ZenPostSendMailEvent extends Event
 {
 
 }

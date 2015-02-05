@@ -13,15 +13,19 @@
 
 namespace ZenMail\ZenSwiftAdapterBundle\Tests\Adapter;
 
-use ZenMail\ZenSwiftAdapterBundle\Adapter\SwiftMailerAdapter;
+use ZenMail\ZenSwiftAdapterBundle\Adapter\ZenSwiftMailerAdapter;
 
-class SwiftMailerAdapterTest extends \PHPUnit_Framework_TestCase
+/**
+ * Class ZenSwiftMailerAdapterTest
+ * @package ZenMail\ZenSwiftAdapterBundle\Tests\Adapter
+ */
+class ZenSwiftMailerAdapterTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * @var SwiftMailerAdapter
+     * @var ZenSwiftMailerAdapter
      */
-    private $swiftMailerEnginer;
+    private $zenSwiftMailerAdapter;
 
     /**
      * @var \Swift_Mailer
@@ -34,15 +38,15 @@ class SwiftMailerAdapterTest extends \PHPUnit_Framework_TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->swiftMailerEnginer = new SwiftMailerAdapter($this->swiftMailer);
+        $this->zenSwiftMailerAdapter = new ZenSwiftMailerAdapter($this->swiftMailer);
 
     }
 
     public function testCreateMessageReturnInstanceOfSwiftMessage()
     {
-        $messageCreated = $this->swiftMailerEnginer->createMessage();
+        $messageCreated = $this->zenSwiftMailerAdapter->createMessage();
 
-        $this->assertInstanceOf('ZenMail\ZenSwiftAdapterBundle\Adapter\SwiftMessageAdapter', $messageCreated);
+        $this->assertInstanceOf('ZenMail\ZenSwiftAdapterBundle\Adapter\ZenSwiftMessageAdapter', $messageCreated);
     }
 
     /*
