@@ -13,19 +13,21 @@
         >
     <testsuites>
         <testsuite name="ZenMail Test Suite">
-            <directory>./src/ZenMail/*/*/Tests/</directory>
+            <directory>./src/ZenMail/*/Tests</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory>./src/ZenMail/</directory>
+            <directory>./src/ZenMail</directory>
             <exclude>
-                <directory>./src/ZenMail/*/*/Tests</directory>
-                <directory>./src/ZenMail/*/*/Resources</directory>
-                <directory>./src/ZenMail/*/*/vendor</directory>
-                <directory>./src/ZenMail/*/*/DependencyInjection</directory>
+                <directory>./src/ZenMail/*/Resources</directory>
+                <directory>./src/ZenMail/*/vendor</directory>
+                <directory>./src/ZenMail/*/DependencyInjection</directory>
             </exclude>
         </whitelist>
     </filter>
+    <php>
+        <server name="KERNEL_DIR" value="./Tests/Functional/" />
+    </php>
 </phpunit>
