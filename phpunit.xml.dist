@@ -12,26 +12,20 @@
          bootstrap="vendor/autoload.php"
         >
     <testsuites>
-        <testsuite name="ZenCoreBundle Test">
-            <directory>./ZenCoreBundle/Tests</directory>
-        </testsuite>
-        <testsuite name="ZenSwiftAdapterBundle Test">
-            <directory>./ZenSwiftAdapterBundle/Tests</directory>
+        <testsuite name="ZenMail Test Suite">
+            <directory>./src/ZenMail/*/*/Tests/</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory>./</directory>
+            <directory>./src/ZenMail/</directory>
             <exclude>
-                <directory>./Resources/</directory>
-                <directory>./DependencyInjection/</directory>
-                <directory>./vendor/</directory>
+                <directory>./src/ZenMail/*/*/Tests</directory>
+                <directory>./src/ZenMail/*/*/Resources</directory>
+                <directory>./src/ZenMail/*/*/vendor</directory>
+                <directory>./src/ZenMail/*/*/DependencyInjection</directory>
             </exclude>
         </whitelist>
     </filter>
-    <php>
-        <server name="KERNEL_DIR" value="./Tests/Functional/" />
-    </php>
-
 </phpunit>
