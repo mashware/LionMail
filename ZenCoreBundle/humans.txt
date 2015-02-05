@@ -1,0 +1,10 @@
+/* TEAM */
+Creator : Alberto Vioque
+Contact: mashware at gmail dot com
+Twitter: AlbertoVioque
+Location: Cartagena, Murcia, España.
+
+/* THANKS */
+http://github.com
+http://symfony.com
+Fabien Potencier
