@@ -14,7 +14,9 @@
 namespace ZenMail\ZenCoreBundle\Tests\Services;
 
 use PaymentSuite\PaymentCoreBundle\Services\PaymentEventDispatcher;
-use PaymentSuite\PaymentCoreBundle\PaymentCoreEvents;
+use ZenMail\ZenCoreBundle\Services\ZenEventDispatcher;
+use ZenMail\ZenCoreBundle\ZenCoreEvents;
+
 
 /**
  * Class ZenEventDispatcherTest
@@ -44,17 +46,26 @@ class ZenEventDispatcherTest extends \PHPUnit_Framework_TestCase
             ->getMock();
     }
 
-    /**
-     * Testing notifyPaymentOrderLoad
-     */
-    public function testNotifyZenPostSendMail()
+    public function testNotifyZenPreSendMail()
     {
-      /*  $this->eventDispatcher
+        $this->eventDispatcher
             ->expects($this->once())
             ->method('dispatch')
-            ->with($this->equalTo('zen_mail.pre_send'), $this->isInstanceOf('PaymentSuite\PaymentCoreBundle\Event\PaymentOrderLoadEvent'));
+            ->with($this->equalTo(ZenCoreEvents::ZEN_PRE_SEND_MAIL), $this->isInstanceOf('ZenMail\ZenCoreBundle\Event\ZenPreSendMailEvent'));
 
-        $paymentEventDispatcher = new PaymentEventDispatcher($this->eventDispatcher);
-        $paymentEventDispatcher->notifyPaymentOrderLoad($this->paymentBridge, $this->paymentMethod);*/
+        $zenEventDispatcher = new ZenEventDispatcher($this->eventDispatcher);
+        $zenEventDispatcher->notifyZenPreSendMail();
+    }
+
+
+    public function testNotifyZenPostSendMail()
+    {
+        $this->eventDispatcher
+            ->expects($this->once())
+            ->method('dispatch')
+            ->with($this->equalTo(ZenCoreEvents::ZEN_POST_SEND_MAIL), $this->isInstanceOf('ZenMail\ZenCoreBundle\Event\ZenPostSendMailEvent'));
+
+        $zenEventDispatcher = new ZenEventDispatcher($this->eventDispatcher);
+        $zenEventDispatcher->notifyZenPostSendMail();
     }
 }
