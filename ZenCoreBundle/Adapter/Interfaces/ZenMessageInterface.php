@@ -14,10 +14,10 @@
 namespace ZenMail\ZenCoreBundle\Adapter\Interfaces;
 
 /**
- * Interface ZenMessage
+ * Interface ZenMessageInterface
  * @package ZenMail\ZenCoreBundle\Adapter\Interfaces
  */
-interface ZenMessage
+interface ZenMessageInterface
 {
 
     /**

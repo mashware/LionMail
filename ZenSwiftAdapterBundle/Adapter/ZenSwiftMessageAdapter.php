@@ -13,13 +13,13 @@
 
 namespace ZenMail\ZenSwiftAdapterBundle\Adapter;
 
-use ZenMail\ZenCoreBundle\Adapter\Interfaces\ZenMessage;
+use ZenMail\ZenCoreBundle\Adapter\Interfaces\ZenMessageInterface;
 
 /**
  * Class ZenSwiftMessageAdapter
  * @package ZenMail\ZenSwiftAdapterBundle\Adapter
  */
-class ZenSwiftMessageAdapter implements ZenMessage
+class ZenSwiftMessageAdapter implements ZenMessageInterface
 {
 
     /**

@@ -13,8 +13,8 @@
 
 namespace ZenMail\ZenCoreBundle\Services;
 
-use ZenMail\ZenCoreBundle\Adapter\Interfaces\ZenMailer;
-use ZenMail\ZenCoreBundle\Adapter\Interfaces\ZenMessage;
+use ZenMail\ZenCoreBundle\Adapter\Interfaces\ZenMailerInterface;
+use ZenMail\ZenCoreBundle\Adapter\Interfaces\ZenMessageInterface;
 use ZenMail\ZenCoreBundle\Services\ZenEventDispatcher;
 
 
@@ -22,13 +22,13 @@ use ZenMail\ZenCoreBundle\Services\ZenEventDispatcher;
  * Class ZenManager
  * @package ZenMail\ZenCoreBundle\Services
  */
-class ZenManager implements ZenMailer
+class ZenManager implements ZenMailerInterface
 {
 
     /**
      * Adaptador elegido por el usuario (traducir)
      *
-     * @var ZenMailer
+     * @var ZenMailerInterface
      */
     private $zenMailer;
 
@@ -40,10 +40,10 @@ class ZenManager implements ZenMailer
     protected $zenEventDispatcher;
 
     /**
-     * @param ZenMailer $zenMailer
+     * @param ZenMailerInterface $zenMailer
      * @param ZenEventDispatcher $zenEventDispatcher
      */
-    function __construct(ZenMailer $zenMailer, ZenEventDispatcher $zenEventDispatcher)
+    function __construct(ZenMailerInterface $zenMailer, ZenEventDispatcher $zenEventDispatcher)
     {
         $this->zenMailer = $zenMailer;
         $this->zenEventDispatcher = $zenEventDispatcher;
@@ -52,26 +52,26 @@ class ZenManager implements ZenMailer
     /**
      * Send the menssage
      *
-     * @param ZenMessage $message
+     * @param ZenMessageInterface $message
      */
-    public function sendMessage(ZenMessage $message)
+    public function sendMessage(ZenMessageInterface $message)
     {
         $this
             ->zenEventDispatcher
-            ->notifyZenPreSendMail();
+            ->notifyZenPreSendMail($message);
 
         echo "- Envío";
-        //$this->zenMailer->sendZenMessage($message);
+        //$this->zenMailer->sendMessage($message);
 
         $this
             ->zenEventDispatcher
-            ->notifyZenPostSendMail();
+            ->notifyZenPostSendMail($message);
     }
 
     /**
-     * Create instance of ZenMessage
+     * Create instance of ZenMessageInterface
      *
-     * @return ZenMessage
+     * @return ZenMessageInterface
      */
     public function createMessage()
     {

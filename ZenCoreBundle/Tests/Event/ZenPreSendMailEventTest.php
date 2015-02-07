@@ -29,9 +29,18 @@ class ZenPreSendMailEventTest extends \PHPUnit_Framework_TestCase
      */
     private $event;
 
+    /**
+     * @var ZenMessageInterface
+     *
+     * Message interface
+     */
+    private $message;
+
     public function setUp()
     {
-        $this->event = new ZenPreSendMailEvent();
+        $this->message = $this->getMock('ZenMail\ZenCoreBundle\Adapter\Interfaces\ZenMessageInterface');
+
+        $this->event = new ZenPreSendMailEvent($this->message);
     }
 
     /**
@@ -40,5 +49,13 @@ class ZenPreSendMailEventTest extends \PHPUnit_Framework_TestCase
     public function testInstanceOf()
     {
         $this->assertInstanceOf('Symfony\Component\EventDispatcher\Event', $this->event);
+    }
+
+    /**
+     * Testing getMessage
+     */
+    public function testGetZenMessage()
+    {
+        $this->assertEquals($this->message, $this->event->getZenMessage());
     }
 }

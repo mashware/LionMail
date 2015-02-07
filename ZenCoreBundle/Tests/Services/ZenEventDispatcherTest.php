@@ -32,11 +32,16 @@ class ZenEventDispatcherTest extends \PHPUnit_Framework_TestCase
     private $eventDispatcher;
 
     /**
+     * @var ZenMessageInterface
+     *
+     * ZenMessage Interface
+     */
+    private $message;
+    /**
      * Setup
      */
     public function setUp()
     {
-
         $this->eventDispatcher = $this
             ->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcher')
             ->setMethods(array(
@@ -44,6 +49,8 @@ class ZenEventDispatcherTest extends \PHPUnit_Framework_TestCase
             ))
             ->disableOriginalConstructor()
             ->getMock();
+
+        $this->message = $this->getMock('ZenMail\ZenCoreBundle\Adapter\Interfaces\ZenMessageInterface');
     }
 
     public function testNotifyZenPreSendMail()
@@ -54,7 +61,7 @@ class ZenEventDispatcherTest extends \PHPUnit_Framework_TestCase
             ->with($this->equalTo(ZenCoreEvents::ZEN_PRE_SEND_MAIL), $this->isInstanceOf('ZenMail\ZenCoreBundle\Event\ZenPreSendMailEvent'));
 
         $zenEventDispatcher = new ZenEventDispatcher($this->eventDispatcher);
-        $zenEventDispatcher->notifyZenPreSendMail();
+        $zenEventDispatcher->notifyZenPreSendMail($this->message);
     }
 
 
@@ -66,6 +73,6 @@ class ZenEventDispatcherTest extends \PHPUnit_Framework_TestCase
             ->with($this->equalTo(ZenCoreEvents::ZEN_POST_SEND_MAIL), $this->isInstanceOf('ZenMail\ZenCoreBundle\Event\ZenPostSendMailEvent'));
 
         $zenEventDispatcher = new ZenEventDispatcher($this->eventDispatcher);
-        $zenEventDispatcher->notifyZenPostSendMail();
+        $zenEventDispatcher->notifyZenPostSendMail($this->message);
     }
 }

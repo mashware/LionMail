@@ -14,6 +14,7 @@
 namespace ZenMail\ZenCoreBundle\Services;
 
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use ZenMail\ZenCoreBundle\Adapter\Interfaces\ZenMessageInterface;
 use ZenMail\ZenCoreBundle\Event\ZenPreSendMailEvent;
 use ZenMail\ZenCoreBundle\Event\ZenPostSendMailEvent;
 use ZenMail\ZenCoreBundle\ZenCoreEvents;
@@ -42,17 +43,17 @@ class ZenEventDispatcher
     }
 
 
-    public function notifyZenPreSendMail()
+    public function notifyZenPreSendMail(ZenMessageInterface $zenMessage)
     {
-        $preSendMailEvent = new ZenPreSendMailEvent();
+        $preSendMailEvent = new ZenPreSendMailEvent($zenMessage);
         $this->eventDispatcher->dispatch(ZenCoreEvents::ZEN_PRE_SEND_MAIL, $preSendMailEvent);
 
         return $this;
     }
 
-    public function notifyZenPostSendMail()
+    public function notifyZenPostSendMail(ZenMessageInterface $zenMessage)
     {
-        $postSendMailEvent = new ZenPostSendMailEvent();
+        $postSendMailEvent = new ZenPostSendMailEvent($zenMessage);
         $this->eventDispatcher->dispatch(ZenCoreEvents::ZEN_POST_SEND_MAIL, $postSendMailEvent);
 
         return $this;

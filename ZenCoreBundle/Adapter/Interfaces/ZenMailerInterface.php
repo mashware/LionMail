@@ -14,24 +14,23 @@
 namespace ZenMail\ZenCoreBundle\Adapter\Interfaces;
 
 /**
- * Interface ZenMailer
- *
+ * Interface ZenMailerInterface
  * @package ZenMail\ZenCoreBundle\Adapter\Interfaces
  */
-interface ZenMailer
+interface ZenMailerInterface
 {
 
     /**
      * Send the menssage
      *
-     * @param ZenMessage $message
+     * @param ZenMessageInterface $message
      */
-    public function sendMessage(ZenMessage $message);
+    public function sendMessage(ZenMessageInterface $message);
 
     /**
-     * Create instance of ZenMessage
+     * Create instance of ZenMessageInterface
      *
-     * @return ZenMessage
+     * @return ZenMessageInterface
      */
     public function createMessage();
 }

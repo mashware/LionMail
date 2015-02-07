@@ -14,12 +14,13 @@
 namespace ZenMail\ZenCoreBundle\Event;
 
 use Symfony\Component\EventDispatcher\Event;
+use ZenMail\ZenCoreBundle\Event\Abstracts\AbstractZenEvent;
 
 /**
  * Class ZenPreSendMailEvent
  * @package ZenMail\ZenCoreBundle\Event
  */
-class ZenPreSendMailEvent extends Event
+class ZenPreSendMailEvent extends AbstractZenEvent
 {
 
 }

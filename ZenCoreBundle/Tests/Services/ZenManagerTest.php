@@ -28,14 +28,14 @@ class ZenManagerTest extends \PHPUnit_Framework_TestCase
     private $zenManager;
 
     /**
-     * @var ZenMailer
+     * @var ZenMailerInterface
      */
-    private $zenMailer;
+    private $zenMailerInterface;
 
     /**
-     * @var ZenMessage
+     * @var ZenMessageInterface
      */
-    private $zenMessage;
+    private $zenMessageInterface;
 
     /**
      * @var ZenEventDispatcher
@@ -44,23 +44,23 @@ class ZenManagerTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->zenMessage = $this->getMock('ZenMail\ZenCoreBundle\Adapter\Interfaces\ZenMessage');
-        $this->zenMailer = $this->getMock('ZenMail\ZenCoreBundle\Adapter\Interfaces\ZenMailer');
+        $this->zenMessageInterface = $this->getMock('ZenMail\ZenCoreBundle\Adapter\Interfaces\ZenMessageInterface');
+        $this->zenMailerInterface = $this->getMock('ZenMail\ZenCoreBundle\Adapter\Interfaces\ZenMailerInterface');
         $this->sendMailEventDispatcher = $this->getMockBuilder('ZenMail\ZenCoreBundle\Services\ZenEventDispatcher')
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->zenManager = new ZenManager($this->zenMailer, $this->sendMailEventDispatcher);
+        $this->zenManager = new ZenManager($this->zenMailerInterface, $this->sendMailEventDispatcher);
     }
 
-    public function testCreateZenMessageReturnInstanceOfZenMessage()
+    public function testCreateZenMessageReturnInstanceOfZenMessageInterface()
     {
-        $this->zenMailer->expects($this->once())
+        $this->zenMailerInterface->expects($this->once())
             ->method('createMessage')
-            ->will($this->returnValue($this->zenMessage));
+            ->will($this->returnValue($this->zenMessageInterface));
 
         $messageCreated = $this->zenManager->createMessage();
 
-        $this->assertInstanceOf('ZenMail\ZenCoreBundle\Adapter\Interfaces\ZenMessage', $messageCreated);
+        $this->assertInstanceOf('ZenMail\ZenCoreBundle\Adapter\Interfaces\ZenMessageInterface', $messageCreated);
     }
 }

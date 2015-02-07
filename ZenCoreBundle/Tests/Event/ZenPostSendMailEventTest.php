@@ -29,8 +29,17 @@ class ZenPostSendMailEventTest extends Event
      */
     private $event;
 
+    /**
+     * @var ZenMessageInterface
+     *
+     * Message interface
+     */
+    private $message;
+
     public function setUp(){
-        $this->event = new ZenPostSendMailEvent();
+        $this->message = $this->getMock('ZenMail\ZenCoreBundle\Adapter\Interfaces\ZenMessageInterface');
+
+        $this->event = new ZenPostSendMailEvent($this->message);
     }
 
     /**
@@ -40,4 +49,13 @@ class ZenPostSendMailEventTest extends Event
     {
         $this->assertInstanceOf('Symfony\Component\EventDispatcher\Event', $this->event);
     }
+
+    /**
+     * Testing getMessage
+     */
+    public function testGetZenMessage()
+    {
+        $this->assertEquals($this->message, $this->event->getZenMessage());
+    }
+
 }
