@@ -29,6 +29,11 @@
         "zenmail/zen-core-bundle": "self.version",
         "zenmail/zen-swift-adapter-bundle": "self.version"
     },
+    "require-dev": {
+        "sensio/generator-bundle": "~2.3",
+        "matthiasnoback/symfony-dependency-injection-test": "0.*",
+        "matthiasnoback/symfony-config-test": "0.*"
+    },
     "autoload": {
         "psr-4": {
             "ZenMail\\": ""
