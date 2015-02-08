@@ -21,4 +21,5 @@ notifications:
 
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
+  - composer update --dev
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
