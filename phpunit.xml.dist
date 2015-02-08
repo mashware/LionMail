@@ -7,27 +7,27 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
-         stopOnFailure="false"
+         stopOnFailure="true"
          syntaxCheck="false"
          bootstrap="vendor/autoload.php"
         >
     <testsuites>
         <testsuite name="ZenMail Test Suite">
-            <directory>./src/ZenMail/*/Tests</directory>
+            <directory>./*/Tests</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory>./src/ZenMail/</directory>
+            <directory>./</directory>
             <exclude>
-                <directory>./src/ZenMail/*/Tests</directory>
-                <directory>./src/ZenMail/*/Resources</directory>
-                <directory>./src/ZenMail/*/Vendor</directory>
+                <directory>./Resources</directory>
+                <directory>./vendor</directory>
+                <directory>./DependencyInjection</directory>
             </exclude>
         </whitelist>
     </filter>
     <php>
-        <server name="KERNEL_DIR" value="./src/ZenMail/*/Tests/Functional/" />
+        <server name="KERNEL_DIR" value="./Tests/Functional/" />
     </php>
 </phpunit>
