@@ -218,4 +218,11 @@ interface ZenMessageInterface
      * @return string
      */
     public function __toString();
+
+    /**
+     * Devuelve el objeto original (traducir)
+     *
+     * @return mixed
+     */
+    public function getInstanceMessage();
 }

@@ -34,12 +34,15 @@ class ZenSwiftMailerAdapterTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->swiftMailer = $this->getMockBuilder('\Swift_Mailer')
+        $transport = $this->getMockBuilder('\Swift_Transport')
             ->disableOriginalConstructor()
+            ->getMock();
+        $this->swiftMailer = $this->getMockBuilder('\Swift_Mailer')
+            ->setConstructorArgs(array($transport))
+            ->setMethods(array('send'))
             ->getMock();
 
         $this->zenSwiftMailerAdapter = new ZenSwiftMailerAdapter($this->swiftMailer);
-
     }
 
     public function testCreateMessageReturnInstanceOfSwiftMessage()
@@ -49,33 +52,16 @@ class ZenSwiftMailerAdapterTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('ZenMail\ZenSwiftAdapterBundle\Adapter\ZenSwiftMessageAdapter', $messageCreated);
     }
 
-    /*
-        public function testCreatedAtIsDateTime() {
-            $date = new \DateTime();
+    public function testSendMessage(){
+        $messageCreated = $this->zenSwiftMailerAdapter->createMessage();
+        $this->swiftMailer
+            ->expects($this->once())
+            ->method('send')
+            ->with($this->equalTo($messageCreated->getInstanceMessage()))
+            ->will($this->returnValue(1));
 
-            $notification = new Notification();
-            $notification->setCreatedAt($date);
+        $sendNum = $this->zenSwiftMailerAdapter->sendMessage($messageCreated);
 
-            // $this->assertEquals($date, $notification->getCreatedAt());
-            $this->assertInstanceOf('DateTime', $notification->getCreatedAt(), 'CreateAt es un objeto \DateTime');
-          $prueba = $this->getMockBuilder('Escuela\BackendBundle\Entity\Prueba')->getMock();
-            $prueba->expects($this->atLeastOnce())
-                ->method('getInicioInscripcion')
-                ->will($this->returnValue(new \DateTime('now - 10 days')));
-            $prueba->expects($this->any())
-                ->method('getFinInscripcion')
-                ->will($this->returnValue(new \DateTime('now + 2 days')));
-            $this->testClass->setPrueba($prueba);
-
-            $this->assertSame(true, $this->testClass->estaPlazoAbierto(), "Si esta el plazo abierto");
-
-        }
-        public function testCreatedAtNotIsDateTime() {
-           /* $notification = new Notification();
-            $notification->setCreatedAt('989');
-
-           // $this->assertEquals($date, $notification->getCreatedAt());
-            $this->assertNotInstanceOf('\DateTime', $notification->getCreatedAt(), 'CreateAt no es devuelve un objeto \DateTime');
-
-        }*/
+        $this->assertEquals(1, $sendNum);
+    }
 }

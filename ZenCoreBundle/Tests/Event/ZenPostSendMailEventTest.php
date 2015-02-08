@@ -20,7 +20,7 @@ use ZenMail\ZenCoreBundle\Event\ZenPostSendMailEvent;
  * Class ZenPostSendMailEventTest
  * @package ZenMail\ZenCoreBundle\Tests\Event
  */
-class ZenPostSendMailEventTest extends Event
+class ZenPostSendMailEventTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var ZenPostSendMailEvent

@@ -309,6 +309,17 @@ class ZenSwiftMessageAdapter implements ZenMessageInterface
     }
 
     /**
+     * Devuelve el objeto original (traducir)
+     *
+     * @return mixed
+     */
+    public function getInstanceMessage()
+    {
+        return $this->swiftMessage;
+    }
+
+
+    /**
      * Returns a string representation of this object.
      *
      * @see toString()

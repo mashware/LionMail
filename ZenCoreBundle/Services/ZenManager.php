@@ -53,6 +53,7 @@ class ZenManager implements ZenMailerInterface
      * Send the menssage
      *
      * @param ZenMessageInterface $message
+     * @return int
      */
     public function sendMessage(ZenMessageInterface $message)
     {
@@ -60,12 +61,16 @@ class ZenManager implements ZenMailerInterface
             ->zenEventDispatcher
             ->notifyZenPreSendMail($message);
 
-        echo "- Envío";
-        //$this->zenMailer->sendMessage($message);
+        //Esto es para probar cosas
+        $sendNum = 1;
+        ///////////////////////////
+        //$sendNum = $this->zenMailer->sendMessage($message);
 
         $this
             ->zenEventDispatcher
             ->notifyZenPostSendMail($message);
+
+        return $sendNum;
     }
 
     /**

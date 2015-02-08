@@ -43,10 +43,12 @@ class ZenSwiftMailerAdapter implements ZenMailerInterface
      * Send the menssage
      *
      * @param ZenMessageInterface $message
+     *
+     * @return int
      */
     public function sendMessage(ZenMessageInterface $message)
     {
-        $this->swiftMailer->send($message);
+        return $this->swiftMailer->send($message->getInstanceMessage());
     }
 
     /**

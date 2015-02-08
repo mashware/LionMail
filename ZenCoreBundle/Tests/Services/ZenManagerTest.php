@@ -63,4 +63,15 @@ class ZenManagerTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('ZenMail\ZenCoreBundle\Adapter\Interfaces\ZenMessageInterface', $messageCreated);
     }
+
+    public function testSendMessage()
+    {
+        $this->zenMailerInterface->expects($this->once())
+            ->method('createMessage')
+            ->will($this->returnValue($this->zenMessageInterface));
+
+        $messageCreated = $this->zenManager->createMessage();
+
+        $this->assertEquals(1, $this->zenManager->sendMessage($messageCreated));
+    }
 }

@@ -19,11 +19,11 @@ namespace ZenMail\ZenCoreBundle\Adapter\Interfaces;
  */
 interface ZenMailerInterface
 {
-
     /**
      * Send the menssage
      *
      * @param ZenMessageInterface $message
+     * @return int
      */
     public function sendMessage(ZenMessageInterface $message);
 
