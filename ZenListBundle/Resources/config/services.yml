@@ -1,0 +1,4 @@
+services:
+#    zen_list.example:
+#        class: ZenMail\ZenListBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

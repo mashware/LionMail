@@ -72,6 +72,6 @@ class ZenManagerTest extends \PHPUnit_Framework_TestCase
 
         $messageCreated = $this->zenManager->createMessage();
 
-        $this->assertEquals(1, $this->zenManager->sendMessage($messageCreated));
+        $this->assertEquals(null, $this->zenManager->sendMessage($messageCreated));
     }
 }

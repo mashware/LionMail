@@ -22,12 +22,13 @@
         "sensio/distribution-bundle": "~3.0.12",
         "sensio/framework-extra-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
-        "symfony/event-dispatcher": ">=2.2.3"
-
+        "symfony/event-dispatcher": ">=2.2.3",
+        "mmoreram/simple-doctrine-mapping": "dev-master"
     },
     "replace": {
         "zenmail/zen-core-bundle": "self.version",
-        "zenmail/zen-swift-adapter-bundle": "self.version"
+        "zenmail/zen-swift-adapter-bundle": "self.version",
+        "zenmail/zen-list-bundle": "self.version"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

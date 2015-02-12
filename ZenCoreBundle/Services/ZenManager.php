@@ -61,16 +61,13 @@ class ZenManager implements ZenMailerInterface
             ->zenEventDispatcher
             ->notifyZenPreSendMail($message);
 
-        //Esto es para probar cosas
-        $sendNum = 1;
-        ///////////////////////////
-        //$sendNum = $this->zenMailer->sendMessage($message);
+        $result = $this->zenMailer->sendMessage($message);
 
         $this
             ->zenEventDispatcher
             ->notifyZenPostSendMail($message);
 
-        return $sendNum;
+        return $result;
     }
 
     /**

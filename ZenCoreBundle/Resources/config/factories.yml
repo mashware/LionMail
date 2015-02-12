@@ -1,0 +1,16 @@
+services:
+
+    #
+    # Factories
+    #
+
+    #
+    # Factory for entity campaign
+    #
+    zenmail.core.factory.campaign:
+        class: %zenmail.core.factory.campaign.class%
+        calls:
+            - [setEntityNamespace, ["%zenmail.core.entity.campaign.class%"]]
+
+    zenmail.factory.campaign:
+        alias: zenmail.core.factory.campaign
